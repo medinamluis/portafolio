@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 1.25em;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #294969;
+  color: ghostwhite;
+  padding: 10px 15px;
+  border: 12px solid #ffa949;
+  border-bottom-color: #cf7919;
+}
+article {
+  margin-top: 3rem;
+}
+section {
+  min-height: 100vh;
+  padding: 1rem;
+  border-bottom: 2px dotted #666;
+  background-color: azure;
+}
+.small-img {
+  width: 100%;
+}
+#interesting-banner {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding: 10px 15px;
+  border: 12px solid lightsalmon;
+  margin 0 -8px;
+  background-color: firebrick;
+  color: white;
+  font-weight: bold;
+}
+/*
+h1 {
+  width: 50%;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background-color: yellow;
+}
+*/
+.hide {
+  display: none;
+}
+figure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+figcaption {
+  width: 100%;
+  bottom: 20px;
+  background-color: yellow;
+  text-align: center;
+}
+figure, aside img, #bio {
+  width: 100%;
+  max-width: 600px;
+}
+#bio {
+  background-color: mistyrose;
+  padding: 2rem;
+  border: 5px solid tomato;
+}
+footer {
+  width: 200px;
+  padding: 4px;
+  border: 2px solid #ffa949;
+  margin: 30px auto 15px;
+  color: #292969;
+  font-size: .8rem;
+  text-align: center;
+}
+ul li {
+  display: block;
+  width: 90%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  background-color: yellow;
+  text-align: center;
+}
+
+@media print {
+  section {
+    min-height: auto;
+  }
+  #interesting-banner {
+    display: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  .small-img {
+    float: left;
+    width: 300px;
+    margin: 0 1rem 1rem 0;
+  }
+  .clear {
+    clear: both;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  header {
+    color: yellow;
+  }
+}
+@media screen and (min-width: 730px) {
+  ul li {
+    display: inline-block;
+    width: 30%;
+  }
+}
+@media screen and (min-width: 900px), (orientation: portrait) {
+  section {
+    background-color: cornsilk;
+  }
+}
