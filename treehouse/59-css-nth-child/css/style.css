@@ -1,0 +1,8 @@
+/* :nth-child Pseudo-classes------------------ */
+
+li:nth-child(-n+0) {
+  /*  argument options: odd, even, an index (starting at 1), a function in the form An+B with A != 0 the step size, B >= 0 the offset, and n = 0,1,2...*/
+  background: #52bab3;
+  color: white;
+}
+

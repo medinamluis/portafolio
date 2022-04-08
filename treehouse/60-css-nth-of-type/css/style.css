@@ -1,0 +1,19 @@
+/* Structural Pseudo-classes------------------ */
+
+/* Does not work since the 4th <div> in <section> is actually the 5th child of <section> */
+div:nth-child(4) {
+  background: #52bab3;
+  color: white;
+}
+ 
+/* Solution: */
+div:nth-of-type(4) {
+  background: #52bab3;
+  color: white;
+}
+
+/* There's also an equivalent nth-last-of-type: */
+div:nth-last-of-type(2) {
+  background: tomato;
+  color: white;
+}

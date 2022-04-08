@@ -1,0 +1,96 @@
+/* Attribute Selectors ------------- */
+
+/* Target form elements with a class attribute equal to "form-contact":
+form[class="form-contact"]
+equivalent to: */
+.form-contact {
+  padding: 20px 24px;
+  background: #f4f7f8;
+}
+
+/*equivalent to*/
+
+/* Target div elements with an id attribute equal to "container":
+div[id="container"]
+equivalent to: */
+#container {
+  max-width: 500px;
+  margin: auto;
+}
+
+
+/*try also 'type="text"' and 'placeholder' */
+input[type="email"] {
+  background: #fdfee6;
+}
+
+
+
+a[target="_blank"] {
+  color: #39add1;
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+
+/* DRY Classes ------------- */
+
+.br {
+  border-radius: 0.5em;
+}
+
+.avatar {
+  display: block;
+  margin: 0 auto 2em;
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+
+.btn {
+  cursor: pointer;
+  font-size: 0.875em;
+  font-weight: 400;
+  color: #fff;
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  opacity: 0.75;
+}
+
+.default {
+  background-color: #52bab3;
+}
+
+.error {
+  background-color: #ff784f;
+}
+
+@media (min-width: 769px) {
+  .inln {
+    /* inline style */
+    width: auto;
+    display: inline-block;
+  }
+  .btn + .btn {
+    /* Combinator that targets the immediate sibling (here 2ns '.btn') of a given element (1st '.btn'), both children of the same parent */
+    margin-left: 20px;
+  }
+}
+
+/* Combinators ------------- */
+
+form > a {
+  /*  All direct children (here of type 'a') of a parent ('form') */
+  font-size: 0.7em;
+}
+
+h1 ~ label {
+  /* Combinator that targets all siblings (types 'label' in this case) that follow a given sibling ('h1' here), all children of the same parent */
+  background: tomato;
+  color: white;
+  padding: 5px;
+}

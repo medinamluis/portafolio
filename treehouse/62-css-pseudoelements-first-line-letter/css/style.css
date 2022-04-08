@@ -1,0 +1,57 @@
+/* Pseudo-elements -------------------------------- */
+
+/* Careful! Not all CSS properties work for pseudo-elements! */
+
+.intro::first-line {
+  /*  A single-colon synthax works too (CS2), but double colon is used (CS3) to differentiate pseudo-elements from pseudo-classes*/
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.intro::first-letter {
+  float: left;
+  font-size: 80px;
+  color: white;
+  padding: 5px 10px;
+  background-color: #384047;
+  margin: 10px 10px 0 0;
+  border-radius: 5px;
+  line-height: 1;
+}
+
+/* ::before and ::after layers are also called generated-content. 
+They do not show in the HTML source code (but they do in the DevTools) */
+
+.jpg::before {
+  content: url("../img/icn-picture.svg");
+  margin-right: 14px;
+}
+
+.zip::before {
+  content: url("../img/icn-zip.svg");
+  margin-right: 14px;
+}
+
+h1::before,
+h1::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: coral;
+  margin: 0 10px;
+}
+
+.d-loads a::after {
+ content: attr(title);  /* Useful to show the full url of the source when printing */
+  display: inline-block;
+  color: initial;
+  font-size: 0.65em;
+  margin-left: 5px;
+}
+
+.d-loads a {
+  /*  Note than the generated-content is prepended and appended to the element, so they are inside the box model */
+  border: solid 1px #5ece7f;
+}

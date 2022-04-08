@@ -1,0 +1,26 @@
+:root {
+  /*  Selects the root of the element, i.e. the highest (top) level parent: the <html> in HTML */
+  /*  It has more specificity than selecting <html> directly */
+  background: #e3effb;
+}
+
+:target {
+  background-color: #394047;
+  color: white;
+}
+
+#col-c:target {
+  background-color: #eff1f2;
+  color: initial;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+input:not([type="submit"]) {
+  /* Targets all elements except the specified one: all input elements that do not have the type submit */
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.2);
+}
+
+.col:not(:first-child),
+nav a:not(:first-child) {
+  margin-left: 15px;
+}

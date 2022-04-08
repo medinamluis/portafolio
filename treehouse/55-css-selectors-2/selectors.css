@@ -1,0 +1,57 @@
+/* ====================================================== 
+   Practice CSS Selectors 
+========================================================= */
+
+/* Change the color of all list items inside an unordered list */
+ul li { /* vs. ul > li */
+  color: red;
+}
+
+/* Remove the text decoration from navigation links, and change their color when hovered */
+nav a:link  {  /*  vs. nav > ul > li > a, or simply nav a */
+  text-decoration: none;
+}
+nav a:hover {  /* nav > ul > li > a:hover */
+  color: green;
+}
+
+/* Create visited and hover styles for all links inside 'main' */
+main a:visited {
+  text-decoration: none;
+}
+main a:hover {
+  color: cyan;
+}
+
+
+/* 
+ Change the background color of the submit button when active.
+ Check teacher's notes for resources on this part of the challenge. */
+input[type="submit"]:active {
+  background-color: green;
+}
+
+
+/* Give the text field a blue border upon focus.
+   Check teacher's notes for resources on this part of the challenge. */
+input[type="text"]:focus {
+  border-color: blue;
+}
+
+
+/* Give the 'span' tag in the footer a meaningful class name and reduce its font size */
+.copyright {
+  font-size: 0.75em;
+}
+
+/* Give the 'img' tag in the header an ID and set its width to 190px */
+#site-logo {
+  width: 190px;
+}
+
+
+/* Target all heading tags on the page and set their font family to 'Bree Serif', serif */
+h1, h2, h3 {
+  font-family: 'Times New Roman'; /* 'Bree Serif', serif; */
+}
+
