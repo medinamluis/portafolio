@@ -1,0 +1,18 @@
+/* ===================================== 
+   Grid Layout
+======================================== */
+
+.grid {
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /*  px, auto, fr (calculated after non-flexible tracks and gutters). */
+  /* repeat(no. of repetitions, width) */
+  /* minmax(min, max). Note: the fr unit only works on the max value. */
+  /* In repeat, use auto-fill as the the 1st value to automatically set the no. of repetitions w/o overflowing the container (creates empty elements with the same width if needed). */
+  /* Similarly, auto-fit allows to repeat w/o overflow, but the empty elements created have a collapsed zero width, allowing them to expand in combination with minmax: repeat(auto-fit, minmax(60px, 1fr)) */
+  grid-template-rows: 100px 200px;  /* If the content corresponds to more grid items than the  number explicity defined for the grid, the remainder will be added to the implicit grid, where size is adjusted to content */
+  grid-auto-rows: minmax(150px, auto);  /* Control size of implicit row tracks */
+  grid-auto-flow: row;  /* row is the default: from left to right, and the wrap if needed. with row, it'll go to top to bottom */
+  grid-auto-columns: 1fr;
+  grid-gap: 20px;  /* (new: gap) Applies gutters Shorthand for row-gap (bef: grid-row-gap) and column-gap (bef: grid-column-gap). A single value applies it to both 
+}

@@ -1,0 +1,35 @@
+/* ===================================== 
+   Grid Layout
+======================================== */
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 100px minmax(200px, 1fr) 100px 100px;
+  grid-gap: 10px;
+}
+
+header {
+  grid-column: 1 / -1;  /* Same as grid-column-start: 1; grid-column-end: -1;  */ 
+ }
+
+main {
+  grid-row: 2 / 3;  /* Same as grid-row-start: 2; grid-row-end: 3; */
+}
+
+aside {
+  grid-row: 2 / -1;
+}
+
+footer {
+  grid-row: -3 / -1;
+}
+
+/* By default items span 1 column(row), so the end can be omiyted if this is the desired column(row) width. Use span: number; to increase the column(row) width
+
+/* use grid-area: 1 / 2 / 3 / 4; to speciy the four line borders /
+
+
+
+
