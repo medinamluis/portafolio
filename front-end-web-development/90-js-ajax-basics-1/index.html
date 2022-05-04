@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/main.css">
+  <title>AJAX with JavaScript</title>
+  <script>
+    // Step 1: Create XMLHttpRequest object:
+    var xhr = new XMLHttpRequest();
+    // Step 2: Create callback function (event handler):
+    xhr.onreadystatechange = function () {
+      console.log(`xhr.readyState = ${xhr.readyState}`);
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) { // Additional status checks
+          // readyState = 4, statusText = DONE -> The operation is complete.
+          // status = 200, statutsText = OK -> The request succeeded.
+          // - For the GET HTTP method, this means that the resource has been fetched and transmitted in the message body.
+          // - For the POST HTTP method, the resource describing the result of the action is transmitted in the message body.
+          document.getElementById('ajax').innerHTML = xhr.responseText;
+        } else {
+          alert(xhr.statusText);  // test it by chaning the URL in xhr.open to non-existent file
+        } 
+      }
+    };
+    // Step 3: Open a request
+    // 1st: the method, ['GET' (send request for data) | 'POST' (for sending data to server, lots or sensitive data) | and others]
+    // 2nd, the URL where the request is going
+    xhr.open('GET', 'sidebar.html');
+    // Step 4: Send the request
+    function sendAJAX() {
+      xhr.send();
+      document.getElementById('load').style.display = "none";
+    }
+  </script>
+</head>
+<body>
+  <div class="grid-container centered">
+    <div class="grid-100">
+      <div class="contained">
+        <div class="grid-100">
+          <div class="heading">
+            <h1>Bring on the AJAX</h1>
+            <button id='load' onclick="sendAJAX()">Bring it!</button>
+          </div>
+          <div id="ajax">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
