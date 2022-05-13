@@ -1,0 +1,100 @@
+/* --------------------------
+  Base
+--------------------------- */
+
+body {
+  background: #8069a1;
+  padding-top: 60px;
+}
+
+svg {
+	margin: auto;
+  display: block;
+}
+
+/* --------------------------
+  Keyframes
+--------------------------- */
+
+@keyframes grow {   /* 'grow' is an identifier */
+  0% {
+    transform: scale(0);
+  }
+  33% {
+    transform: scale(1.1);
+  }
+  67% {
+    transform: scale(0.9);
+  }
+  /* Omit 100% to go back to the initial state */
+}
+
+@keyframes turn {
+  0% {
+    transform: rotate(0) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: rotate(375deg) scale(1.1);
+  }
+  80% {
+    transform: rotate(355deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.4);
+  }
+  /* We don't include 0% nor 100% because we will use the element's intial scale value of 1 */
+}
+
+/* --------------------------
+  SVG Styles
+--------------------------- */
+
+.badge * {   /* Note the unviersal selector to apply this rule to all elements inside of .badge */
+  transform-origin: 50% 50%;
+  transform-box: fill-box;   /* IMPORTANT! */
+}
+
+.outer-circle,
+.inner-circle,
+.shine {
+  animation: grow 1s ease-out backwards;  /* the 'backwards' animation-fill-mode immediately applies the 0% keyframe from the start */
+}
+
+.inner-circle {
+  animation-delay: .1s;
+}
+
+.shine {
+  animation-delay: .15s;
+}
+
+.star {
+  animation: turn 1.1s 0.2s ease-out backwards;
+}
+
+.star circle {
+  animation: pulse 0.7s 1.5s;
+}
+
+.star circle:nth-of-type(2) {
+  animation-delay: 1.6s;
+}
+
+.star circle:nth-of-type(3) {
+  animation-delay: 1.7s;
+}
+
+.star circle:nth-of-type(4) {
+  animation-delay: 1.8s;
+}
+
+.star circle:nth-of-type(5) {
+  animation-delay: 1.9s;
+}

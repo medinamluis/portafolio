@@ -1,0 +1,44 @@
+/* --------------------------
+  Keyframes
+--------------------------- */
+
+@keyframes offset {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillit {
+  100% {
+    fill: #6FBC6D;  /* fill the logo after path animation is completed. Initially, the fill was fill="transparent" */
+  }
+}
+
+
+/* --------------------------
+  SVG Styles
+--------------------------- */
+
+svg {
+	display: block;
+	margin: 2em auto 0;
+	width: 40%;
+}
+
+.logo {
+  stroke: #6FBC6D;  
+  stroke-width: 2;
+  /* stroke-dasharray: 5; */   /* dashed line with 5-unit-length dashes and gaps */
+  /* stroke-dashoffset: 5; */  /* offset the dashed array by 5 units */
+  stroke-dasharray: 810;  /* line with a single dash the length of the entire path, find by trial and error */
+  stroke-dashoffset: 810; /* a gap of the same length than the path/dash. This first element in the gap/dash line is actually a gap, so we won't see anything at the begining and then it will reveal the siluette as the gap length decreases */
+  animation: offset 3s linear forwards,    /* linear timing, forwards fill mode to end animation at the last keyframes  */
+             fillit 0.6s 3s forwards;
+}
+
+
+
+/* The total path length can also be found with JS:
+var path = document.querySelector('.logo');
+var length = path.getTotalLength();
+*/

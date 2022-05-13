@@ -1,0 +1,36 @@
+/* NOTE: Only ANIMATABLE CSS properties with a defined halfway point accept transition */
+
+/* ================================= 
+  Button Transitions
+==================================== */
+
+.button {
+	color: #4a89ca;
+  border: 2px solid;
+  transition-property: background, border-radius, color;  /* Defautl: all (no recommended, as the browser will literally check for changes in ALL css properties for this object -> be specific */
+  transition-duration: 400ms, 800ms;   /* In [s|ms]. If threre's a missing duration (e.g. 2 durations and 3 properties, the last one defaults to the 1st duration), but it's a best practice to include them all  */
+}
+
+.button:hover {
+  color: #fff;
+  background: #4a89ca;
+  border-radius: 1em;
+}
+
+.button:active {
+  background: #a33833;
+}
+
+/* ================================= 
+  Photo Overlay Transitions
+==================================== */
+
+.photo-overlay{
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 400ms;
+}
+
+.photo-overlay:hover {
+  opacity: 1;
+}

@@ -1,0 +1,64 @@
+/* ================================= 
+  Button Transitions
+==================================== */
+
+.button {
+	transition: background .3s;
+}
+.button:hover {
+	background: rgba(74,137,202, 1);
+}
+
+/* ================================= 
+  Photo 3D Transforms & Transitions
+==================================== */
+
+.cube-container {
+	box-shadow: 0 18px 40px 5px rgba(0,0,0,.4);
+  perspective: 800px;  /* same perspective to all cubes */
+}
+
+.photo-cube {
+  width: 220px;
+  height: 220px;
+  transition: transform 2s ease-in-out;
+  transform-style: preserve-3d;  /* inherit parent's perspective */
+}
+
+.photo-cube:hover {
+  transform: rotateY(-270deg);  /* rotate from R to L and stop in the back side */
+}
+
+.front,
+.back,
+.left,
+.right {
+  /* Inherit the size of the cube */
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;  /* stack them on top of each other for now */
+}
+
+.front {
+  transform: translateZ(110px);  /* move away from the viewer */
+  /* This is equivalent to the general translation:
+  translate3d(0, 0, 110px);
+  */
+}
+
+.back {
+  transform: translateZ(-110px) rotateY(270deg);  /* move closer to the viewer, and undo rotation */
+  transform-origin: center left;
+}
+
+.left {
+  transform: rotateY(-270deg) translateX(110px); /* undo rotation (and go overboard by 90deg to flip it) and move */
+  transform-origin: top right;
+}
+
+.right {
+  transform: translateZ(-110px) rotateY(180deg); /* move and undo rotation (but keep short by 90deg to flip it) */
+}
+
+/* Note:

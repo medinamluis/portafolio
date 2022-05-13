@@ -1,0 +1,53 @@
+/* ================================= 
+  Button Transitions
+==================================== */
+
+.button {
+	transition: background .3s;
+}
+.button:hover {
+	background: rgba(74,137,202, 1);
+}
+
+/* ================================= 
+  Photo 3D Transforms & Transitions
+==================================== */
+
+.photo-container {  /* we target the direct parent of the pictures so they all share the same vanishing point */
+  perspective: 1000px;  /* Enables 3D in .content. It sets the distance from user to the z=0 plane, typically 500-1500px. IT IS NOT PASSES to the container's CHILDREN by default.  */
+  perspective-origin: 50% 100%;  /* Sets the position of the origin of the 3D coordinate system in the screen: default is (X=) 50% (Y=) 50% or center center. 0% 0% is left top and 100% 100% is right bottom. Alternatively, use these keywords */
+}
+
+.photo {
+  /* transform: rotateY(90deg); */
+ transition: transform 1s cubic-bezier(0.55, -0.62, 0.27, 1.2);
+ transform-style: preserve-3d;   /* Default: flat, i.e. does not inherit the parent's 3D perspective). Use preserve-3d to pass down the parent's 3D space */
+}
+
+/* Rotations:
+
+     Y              Y                Y                  Y
+     \              \                \                 |
+     \              Z                \                |
+     Z---X          ·--X             ·Z-X             Z_
+                                                        -X  
+               rotateX(30deg);  rotateY(30deg);  rotateZ(30deg);
+       flips...  vertically      horizontally      2D rotation
+
+*/
+
+.photo:hover {
+  transform: rotateX(-180deg);
+}
+
+.side-a,
+.side-b {
+  backface-visibility: hidden;   /* Default: visible, i.e. shows the back face of the image as it was transparent (the flipped mirror image). Use hidden to set the reverse side blank */
+  /* NOTE: This might be needed for compatibility in Chrome, Safari, iOS, Android and Opera: */
+  /*  -webkit-backface-visibility: hidden;*/
+}
+
+/* With the backface of side a being hidden, we can see side b when flipped (it's backface, as it was on a layer under side a). However, the image is flipped, and we need to reverse */
+.side-b {
+  transform: rotate3d(1, 0, 0, 180deg);  /* General rotation, rotate3d(x, y, z, angle), where x, y, z are in [0:1]. Thus, this is equivalent to rotateX(180deg); */
+}

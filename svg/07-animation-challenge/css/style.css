@@ -1,0 +1,83 @@
+/* --------------------------
+  Base
+--------------------------- */
+
+body {
+  padding-top: 60px;
+	background: #0f4e7a;
+}
+
+svg {
+	margin: auto;
+  display: block;
+	width: 28%;
+}
+
+/* --------------------------
+  Keyframes
+--------------------------- */
+
+@keyframes slideup {
+  0% {
+    transform: translateY(200px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes enhance {
+  50% {
+    fill: #FFFFAA;
+    opacity: 1;
+    transform: rotate(-15deg) scale(1.1);
+  }
+}
+
+@keyframes drawLine {
+  75% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+  }
+}
+
+
+/* --------------------------
+  SVG Styles
+--------------------------- */
+
+.star {
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+.star {
+  animation: slideup 400ms cubic-bezier(0.70, 0.70, 0.70, 1.40) backwards,
+             enhance 400ms ease-in-out;
+}
+
+.stars .star:nth-of-type(1) {
+  animation-delay: 0s,
+                   1200ms;
+}
+
+.stars .star:nth-of-type(2) {
+  animation-delay: 400ms,
+                   1600ms;
+}
+
+.stars .star:nth-of-type(3) {
+  animation-delay: 800ms,
+                   2000ms;
+}
+
+.stars-bg {  /* circle's outline */
+  stroke-opacity: 0;
+  stroke-dasharray: 812;
+  stroke-dashoffset: 812;
+  animation: drawLine 1000ms linear 2000ms forwards;
+}

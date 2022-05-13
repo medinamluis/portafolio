@@ -1,0 +1,80 @@
+/* ================================= 
+  Photo Overlay Transitions
+==================================== */
+
+.photo-overlay {
+	opacity: 0;
+	transition: opacity .5s;
+}
+.photo-overlay:hover {
+	opacity: 1;
+}
+
+/* ================================= 
+  Button Transitions
+==================================== */
+
+.button {
+	transition: background .3s, color .3s;
+}
+.button:hover {
+	color: #fff;
+	background: #4a89ca;
+}
+
+/* ================================= 
+  Image Transforms & Transitions
+==================================== */
+
+/* -- Row 1 --------- */
+
+img {
+	transition: transform .5s cubic-bezier(0.7, -0.4, 0.3, 1.4);  /* note the custom transition-timing-function */
+  transform-origin: 50% 50%;  /* Default: 50% 50% meaning center center. 0 0 would be top left and 100% 100% top bottom. Alternatively, use these keywords */
+}
+
+img:hover {
+  /* transform: rotate(-5deg); */  /* counterclockwise  
+  /* transform: scale(1.1); */
+  /* transform: translateX(15px); */
+  /* transform: translateX(100%); */  /* percent w.r.t. to the original image size */
+  /* transform: translateY(-30px); */
+  /* transform: translate(50%, 100%); */  /* (x) or (x,y) */
+  transform: rotate(-5deg) scale(1.1);    /* Combined. Be careful not to add another in a new declaration, otherwise it overrides the original */
+}
+
+/* -- Row 2 --------- */
+
+.photo img {
+  transform-origin: top left;
+}
+
+.photo:hover img {
+  transform: scale(1.2);  /* use combined with overflow: hidden in the same .photo */
+}
+
+
+/* -- Row 3 --------- */
+
+.slide .photo-overlay,
+.slide img {
+  transition: transform .6s ease-out;
+}
+
+.slide .photo-overlay {
+  transform: translateX(-100%);
+}
+
+.slide:hover .photo-overlay {
+  transform: translateX(0%);
+}
+
+.slide:hover img {
+  transform: translateX(100%);
+}
+
+/* -- Logo ---------- */
+
+.logo:hover {
+	transform: rotate(-20deg);
+}
