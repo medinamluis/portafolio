@@ -1,0 +1,26 @@
+// ======================================
+//  Functions
+// ======================================
+
+@function divide($a, $b) {
+  // Return the result of the @function directive with @return:
+  @return ($a / $b);
+}
+
+// With optional parameters with default values:
+@function px-to-pct($target, $context: $max-width) {
+    @return ($target / $context) * 100%;
+}
+  
+// Check the compiled CSS to see this style as...
+.test {
+  // line-height: divide(32px, 16px);   // line-height: 2;   // BE CAREFUL WITH UNITS!
+  // width: px-to-pct(400px, 1200px);   // width: 33.33333%; since = (400px / 1200px) * 100%
+  width: px-to-pct(400px);              // width: 40%;       since = (400px / $context = $max-width = 1000px) * 100%
+}
+
+@function ncols-per-line($items) {
+    $gutter-pct: px-to-pct($gutter) * 2;   // 2 to account both sides of an element, local variable
+    $gutter-total: $items * $gutter-pct;        // local variable
+    @return (100% / $items) - $gutter-total;
+}

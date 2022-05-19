@@ -1,0 +1,23 @@
+// ======================================
+//  Loops
+// ======================================
+
+// @for loop
+@for $i from 1 to 10 {
+  // 'through' -> [1,10]
+  // 'to' -> [1,10) 
+  .box-#{$i} {  // interpolation #{} in the selector name synthax
+    background-color: adjust-hue(tomato, 20deg * $i);
+  }
+}
+
+// SASS lists
+$teachers: ('andrew', 'alena', 'joel', 'danielle', 'nick', 'aisha');
+
+// @each loop
+@each $teacher in $teachers {
+  .teacher-#{$teacher} {
+    background-image: url('img/#{$teacher}.jpg');
+  }
+}
+  

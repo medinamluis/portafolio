@@ -1,0 +1,239 @@
+/* VARIABLES -------------------------------------- */
+
+$white: #fff;
+
+$color-primary: #278da4;
+$color-secondary: #b13c69;
+$color-accent: #eeea72;
+$color-shade: #eee;
+
+$color-text: #343434;
+$color-bg: #3acec2;
+$color-bg-light: #009fe1;
+
+$font-stack-primary: 'Raleway', sans-serif;
+$font-stack-secondary: 'Bree Serif', serif;
+
+$max-width: 1000px;
+
+/* MIXINS ----------------------------------------- */
+
+/* Mixins are useful to create reusable utilities */
+@mixin skewed {  
+    content: '';
+    display: block;
+    width: 100%;
+    height: 50px; 
+    position: absolute;
+    transform: skewY(-2deg);
+}
+
+@mixin center {
+  /* Centering an element */
+  width: 90%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* BASE ------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: $color-text;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: $font-stack-primary;
+  text-align: center;
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: $font-stack-secondary;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin-bottom: 1.25em;
+  /* The parent selector can also be used standalone in descendant selector */
+  .intro & {
+    font-size: 1.2em;
+  }
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  /* Nesting useful for pseudoclasses. But remember to use the parent selector ($), otherwise :hover is compiled into a [space] :hover, which is won't select the pseudoclass correctly. */
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+/* HEADER & FOOTER -------------------------------- */
+
+header {
+  height: 460px;
+  background: linear-gradient($color-bg-light, $color-bg), url('../img/bg.jpg') no-repeat;
+  background-blend-mode: multiply;
+  background-size: cover;
+  position: relative;
+  /* Nesting of pseudoelements */
+  &::after {
+    @include skewed;   /* Add SASS mixin. They need to be defined before they are invoked. */
+    background-color: $white;
+    bottom: -25px;
+  } 
+} 
+
+header h1 {
+  color: $white;
+  font-size: 4.8em;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+}
+
+header p {
+  color: $color-accent;
+  font-size: 1.25em;
+  margin: 0;
+}
+
+footer {
+  padding: 2em 0 0;
+  height: 100px;
+  background-color: $color-shade;
+  margin-top: 3.5em;
+  position: relative; 
+  &::before {
+    @include skewed;
+    background-color: $color-shade;
+    top: -25px;
+  } 
+}
+
+/* CONTAINERS ------------------------------------- */
+
+.inner {
+  padding: 0.5em 1em;
+}
+
+.intro {
+  margin: auto;
+  padding: 1em 1em 3em; 
+}
+
+/* COMPONENTS ------------------------------------- */
+
+.main-nav {
+  margin-top: 1em;
+  /* SASS nested selector. Combinators (e.g. direct child >) can also be added at the begining of the nested selector (e.g. > li) */
+  li { 
+    display: inline-block;
+    margin: 0 0.65em;
+  }
+  a { 
+    color: $white;
+    font-size: 0.85em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.5em;
+  }
+  & a:hover {
+    color: $color-secondary;
+  }
+}
+
+.img-featured {
+  width: 165px;
+  border: 4px solid $white; 
+  border-radius: 50%;
+  margin-top: 75px;
+  position: relative;
+  z-index: 100;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em 1em;
+  border: 1px solid $color-shade;
+  border-radius: 0.25em;
+  h1 { 
+  margin: 0.35em 0 0;
+  line-height: 1.25;
+  }
+  .icon,
+  h1 {
+    color: $color-primary;
+  }
+}
+
+.btn {
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.75em 1.5em;
+  border-radius: 0.35em;
+  /* Parent selector also can be used as the root name of a selector (or a common keyword) and add then the corresponding suffixes/prefixes of the related selectors: e.g. .btn-callout -> nested $-callout */
+  &-callout {
+    font-size: 1.1em;
+    background-color: $color-secondary;
+  }
+  &-info {
+    font-size: 0.85em;
+    background-color: $color-primary;
+    margin-top: auto;
+  }
+}
+
+
+/* MEDIA QUERIES ---------------------------------- */
+
+@media (max-width: 575px) {
+  header {
+    height: 340px;
+  }
+  header h1 {
+    font-size: 3.4em;
+  }
+  .img-featured {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+  }  
+  .card {
+    flex: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    @include center;
+  }
+}
+
+@media (min-width: 992px) {
+  header {
+    background-position: 0 0, 0 45%;
+  }
+  .intro {
+    width: 45%;
+  }
+}

@@ -1,0 +1,13 @@
+// ======================================
+//  Image Styles
+// ======================================
+
+.img-featured {
+  @include roundy($dim: 165px, $brdstyle: 4px solid $white);  // the parameters can be in a different order than in the mixin declaration provided that they are passed with their corresponding keyword. If keyweords are omitted, then the arguments must be passed in the order of the parameters they correspond to.
+  margin-top: 75px;
+  position: relative;
+  z-index: 100;
+  @include mq('xs') {   // argument can be passes with or without quotes ''
+    display: none;
+  }
+}

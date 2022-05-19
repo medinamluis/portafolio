@@ -1,0 +1,25 @@
+// ======================================
+//  Card Styles
+// ======================================
+
+.card {
+  @include flexy($dir: column);
+  padding: 1.5em 1em;
+  border: 1px solid $color-shade;
+  border-radius: 0.25em;
+  margin: $gutter;
+  h1 {
+    color: $color-primary;
+    margin: 0.35em 0 0;
+    line-height: 1.25;
+  }
+  @include mq('s') {
+    // Note:
+    // flex with 1 argument  -> flex-grow = number (flex-shrink = 1, flex-basis = 0)
+    // flex with 2 arguments -> flex-grow = number1, flex-shrink = number2 OR flex-basis = width (unit or percentage)
+    flex: 1 ncols-per-line(2);  // 1 -> all cards the same width; ~50% -> default size before distribution of space: here, 2 columns with approx. half column width (minus the gutters, calculated with the untility @function ncols-per-line)
+  }
+  @include mq('l') {
+    flex: ncols-per-line(3);
+  }
+}

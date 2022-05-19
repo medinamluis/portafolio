@@ -1,0 +1,17 @@
+header {
+  padding: 2rem 0;
+}
+
+.featured {
+  height: 500px;
+  background: #F99;
+  margin-bottom: 2rem;
+}
+
+.profile-info img {
+  max-width: 6rem;
+  max-height: 6rem;
+  border-radius: 1rem;
+  margin: -0.5rem 1rem 0 0;
+}
+  

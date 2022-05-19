@@ -1,0 +1,107 @@
+// =========================================
+//  Mixins
+// =========================================
+
+// Slanted effect
+@mixin skewed {
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 50px; 
+    position: absolute;
+    transform: skewY(-2deg);
+    @content;
+  }
+}
+
+// Center containers
+@mixin center($w) {
+  width: $w;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Rounded elements
+// Mixin with (default) parameters. For the $brdstyle parameter, we will pass the 3 arguments that border accepts. Using 'null' as the default argument of a parameter not only makes it optional, but it prevents it from being output in the compiled .css if not needed
+@mixin roundy($dim, $brdstyle: null) {
+  width: $dim;
+  height: $dim;
+  border: $brdstyle;
+  border-radius: 50%;
+}
+  
+// Create a flex container
+  @mixin flexy(
+    $disp: flex,
+    $dir: null,
+    $wrap: null,
+    $just: null
+    ) {
+    display: $disp;
+    flex-direction: $dir;
+    flex-wrap: $wrap;
+    justify-content: $just;
+}
+
+// Media queries with conditional statements
+@mixin mq($break) {
+  // Original:
+  //  @if $break == 'xs' {
+  //    @media (max-width: $break-xs) {
+  //      @content;
+  //    }
+  //  }
+  //  @else if $break == 's' {
+  //    @media (max-width: $break-s) {
+  //      @content;
+  //    }
+  //  }
+  //  @else if $break == 'm' {
+  //    @media (max-width: $break-m) {
+  //      @content;
+  //    }
+  //  }
+  //  @else if $break == 'l' {
+  //    @media (max-width: $break-l) {
+  //      @content;
+  //    }
+  //  }
+  //  // if no condition is evaluated to True, do nothing...
+  
+  // Refactoring:
+            
+  $value: map-get($breakpoints, $break);
+  $s: map-get($breakpoints, 's');
+  
+  @if $value == null {
+    // Try it by passing an argument with a typo in an @include mq()
+    @error "'#{$break}' is not a valid breakpoint name.";
+    // @error is strict: it stops the compiling. Useful to check the arguments have the types/format required.
+    // @warn just gives a warn but it compilation continues running. Useful to discourage users from passing certain arguments/values (e.g. if deprecated)
+    // @debug "my parameter's value is #{$parameter}" prints the value of a variable or expression to the console
+  }
+  
+  @if $value < $s {    // it will happen when we pass $break = 'xs'
+    @media (max-width: $value) {
+      @content;
+    }
+  }
+  @else {
+    @media (min-width: $value) {  // the rest of cases: assign the correspondign value as min
+      @content;
+    }
+  }
+}
+  
+  // Colors:
+  @mixin apply-theme-colors($map) {
+    @each $theme, $color in $map {
+      &-#{$theme} { // The parent selector will allow to apply the rules to any parent selector where this rule is applied
+        color: $color;
+      }
+    }
+  }
+  

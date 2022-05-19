@@ -1,0 +1,5 @@
+// Partial imports. Order of import is important
+@import 'partials/variables',    // no needed for the '_' nor '.scss' 
+        'partials/mixins',
+        'partials/helpers',      // passholders %btn and %clearfix
+        'partials/main-styles';

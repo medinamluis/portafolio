@@ -1,0 +1,47 @@
+// With parent selector &:
+/*
+.btn {
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.75em 1.5em;
+  border-radius: 0.35em;
+  &-callout {
+    font-size: 1.1em;
+    background-color: $color-secondary;
+  }
+  &-info {
+    font-size: 0.85em;
+    background-color: $color-primary;  
+    margin-top: auto;
+  }
+}
+*/
+// Alternatively, we can use @extend directive to group selectors sharing the same properties. It is common also to define the common properties with a "placeholder" rule (%): it's a selector that doesn't get output to CSS upon compilation, unless is is extended (this helps to avoid outputting unnecessary styles to the compiled CSS)
+%btn {
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.75em 1.5em;
+  border-radius: 0.35em;
+  &:hover {
+    color: $white;
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: initial;
+  }
+}
+
+// placeholders (%) are useful to declare the CSS rules needed to clear a float
+%clearfix {
+  &::after {
+      content: '';
+      display: table;
+      clear: both;
+  }
+}
