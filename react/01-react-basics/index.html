@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+
+  <body>
+    
+    <div id='root'>Loading...</div>  <!-- The text will be replaced by the rendered React element -->
+    
+    <!-- LOAD REACT -->
+    
+    <!-- OLD: -->
+    <!--
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="./app.js"></script>
+    -->
+    
+    <!-- NEW: -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Load BABEL: Do not use this @babel/standalone, but a build system running on Node.js -->
+    <!-- OLD (in Treehouse) -->
+    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <!-- NEW: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Load our React component. -->
+    <!-- Signal to compile it with babel vefore executing it. In production, app.js should be already pre-compiled with a build tool like webpack -->
+    <!-- <script src="./app-1st-react-elem.js" type="text/babel"></script> -->
+    
+<!--    <script src="./app.js" type="text/babel"></script>-->
+    <script src="./app2.js" type="text/babel"></script>  
+
+  </body>
+</html>

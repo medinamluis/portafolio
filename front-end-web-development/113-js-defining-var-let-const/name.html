@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>name - let and Const</title>
+  </head>
+  <body>
+    <h1>Name</h1>
+    
+    <h2><em>const</em> and scope</h2>
+    <p>A variable (<emp>var</emp>) <em>name</em> has been created and assigned originally the string "Andrew". However, open DevTools, and you'll see that its value is "Joel "Kraft". This due to the variable being overwritten by another function in the JS script.<br />To prevent it, just declare it with <em>const</em>!(and also declare the additional <em>name</em> variable inside the function scope as a const variable).</p>
+    <script>
+      var name = "Andrew";
+      // Do this instead:
+      // const name = "Andrew";
+      function createFullName(fName, lName) {
+          var name = fName + " " + lName;
+          // Also do this instead:
+          // const name = fName + " " + lName;
+          console.log(name);
+      }
+      console.log(name);
+      createFullName("Joel", "Kraft");
+    </script>
+    
+    <h2><em>const</em> with arrays and objects</h2>
+    <p>Declaring arrays and objects as <em>const</em> variables does not prevent their contents from being modified with their corresponding methods. It does however prevent you from reassigning it to a new object! See results in Console.</p>
+    <script>
+      const days = ["Monday"];
+      console.log(days);
+      days.push("Tuesday");    // no error
+      console.log(days); 
+    //days = ["Wednesday"];    // error
+      const person = {first_name: "Joe"};
+      console.log(person);
+      person.last_name = "Doe";      // no error
+      console.log(person);
+    // person = {first_name: "Mary"}; // error
+    </script>
+    
+  </body>
+</html>

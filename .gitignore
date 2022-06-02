@@ -1,2 +1,6 @@
 **/.DS_Store
 web-design/
+
+# Ignore node modules installed for npm practice and dummy .gignore in that 'project'
+node-npm/02-npm-install-local/.gitignore
+node-npm/02-npm-install-local/node_modules/

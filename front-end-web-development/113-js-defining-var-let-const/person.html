@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>person - let and Const</title>
+  </head>
+  <body>
+    <h1>Person</h1>
+    <p>Similar to <em>var</em>, <em>let</em> allow to reassign the value of the variable. It's preferred over <em>var</em>, however, due to its block-level scoping. See results in Console.</p>
+    <script>
+       const person = {
+            first_name: "Andrew",
+            role: "Teacher"
+        }
+    
+        function personDescription(person) {
+            // This works:
+            // var description = person.first_name;
+            // This works too, and it's preferred due to the block-level scoping of let:
+            let description = person.first_name;
+            if(person.role) {
+                description = description + " is a ";
+                description = description + person.role;
+            }
+            console.log(description);
+        }
+    
+        personDescription(person);
+    </script>
+  </body>
+</html>

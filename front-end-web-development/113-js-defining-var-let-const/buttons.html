@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>buttons - let and Const</title>
+  </head>
+  <body>
+    <h1>Buttons</h1>
+    <button>Button 0</button>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+    <script>
+      const buttons = document.getElementsByTagName("button");
+      
+      // Using var will cause the alert to always read "Button 4 Pressed"! This is due to var i leaks out of the for loop, as if "var i = 0;" was declared on just before the loop
+      for(var i = 0; i < buttons.length; i++) {
+      // Use let instead which has a local scope:
+//      for(let i = 0; i < buttons.length; i++) {
+          const button = buttons[i];
+          button.addEventListener("click", function() {
+              alert("Button " + i + " Pressed");
+          });
+      }
+    </script>
+  </body>
+</html>
