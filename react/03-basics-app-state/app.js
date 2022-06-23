@@ -102,7 +102,7 @@ const Player = (props) => {
 }
 
 // APP COMPONENT
-// Also defined now as a statefull class component in charge of rendering player componenets, which are now elements on the players state. Also, props.initialPlayers -> this.state.players in render()
+// Also defined now as a stateful class component in charge of rendering player componenets, which are now elements on the players state. Also, props.initialPlayers -> this.state.players in render()
 class App extends React.Component {
   
   // Initialisation of state (available to all children -> application state)
