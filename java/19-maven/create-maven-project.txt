@@ -1,0 +1,103 @@
+Create Maven project:
+
+1. In te console, move to the directory that will contain the project.
+
+2. Type:
+		mvn archetype:generate -B -DgroupId=com.example -DartifactId=file-spy
+	where
+		-B  Batch: Do not ask questions along the way!
+		-D  Define system properties:
+				groupId and artifactId cathegorize and identify the project (maiin form of organization of the repository)
+   The resulting project structure is as follows:
+.
+├── pom.xml
+└── src
+    ├── main
+    │ └── java
+    │     └── com
+    │         └── example
+    │             └── App.java
+    └── test
+        └── java
+            └── com
+                └── example
+                    └── AppTest.java
+
+3. For resources, make a "resources" directory inside "main" and "test"
+
+4. Create your Java app...
+
+5. To compile, in the terminal type
+        mvn compile
+    A new directory target is created (contianing the compiled App.class):
+.
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── App.java
+│   │   └── resources
+│   └── test
+│       └── java
+│           └── com
+│               └── example
+│                   └── AppTest.java
+└── target  <---
+    ├── classes
+    │   └── com
+    │       └── example
+    │           └── App.class  <----
+    ├── generated-sources
+    │   └── annotations
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+6. Create the artifact, which type determined by the packaging (in this case, .jar):
+        mvn package
+    Result:
+...
+└── target
+    ├── classes
+    │   └── com
+    │       └── example
+    │           └── App.class
+    ├── file-spy-1.0-SNAPSHOT.jar  <--- .jar
+    ...
+    There it is our package, but not still not runnable (e.g. still needs its dependencies). Its purpose is to be used as a Maven dependency in other projects
+7. To do so, we need to run the install phase of the default build cycle. Thi will save the pom.xm and .jar to a local repository where Maven saves the .jars of all used dependencies (usually ~/.m2/)
+    cd ~/.m2/
+    tree -P 'file-spy*jar' --prune    //  result: 0 directories, 0 files --- we haven't installed it yet
+8. Move back to the project's directory (file-spy) and install:
+        mvn install
+    Result:
+.
+└── repository
+    └── com
+        └── example
+            └── file-spy
+                └── 1.0-SNAPSHOT
+                    └── file-spy-1.0-SNAPSHOT.jar
+    This can now be used in other projects.
+
+9. Create a new project and use it:
+    mvn archetype:generate -B -DgroupId=com.example -DartifactId=another-maven-project
+
+10. You can add and use the package there. 
+
+11. To run and execute file-spy move to its directory aand run a goal (goal name Java) from the execute (exact) plugin short for execute:
+        mvn exec:java -Dexec.mainClass="com.example.App"
+
+12. This has started the program in the terminal. To test it, open a new Finder window and drop some CSV files into the Desktop directories (the type of files and the directory that file-spy is watching). When adding a new file, it should show:
+    File found: test.csv
+
+13. For collaboration, there's Maven wrapper. To add it to the project, in the project directory type
+        mvn -N io.takari:maven:wrapper
+    It'll create the mvnw and mvnw.cmd executables for UNIX-based and Windows systems, respectively.
+
+    These additions cab de added to your repository (like Git) so when a new developer joins the tema, they can simply run the mvnw package (w/o having to install Maven in their own machines).

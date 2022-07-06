@@ -117,7 +117,8 @@ public class Explore {
     System.out.println();
     
     // Sort by string length of each name in the list (requires java.utils.Comparator).
-    // The argument of the static method .comparing of the Comparator class is a "method reference" telling how to get the property to compare (the array elements are all strings with the length property):
+    // The argument of the static method .comparing of the Comparator class is a "method reference" indicating
+    // how to get the property to compare (the array elements are all strings with the length property):
     String[] diffLengthNames = {"Christine", "Anne", "Bethy",};  // array literal
     Arrays.sort(diffLengthNames,
                 Comparator.comparing(String::length).reversed());  // reversed for longer name first

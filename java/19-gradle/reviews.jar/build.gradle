@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example.reviews'
+version '1.0-SNAPSHOT'
+
+repositories {
+    // repositories takes a "closure" (parameters, here a call to the helper function mavenCentral() )
+    mavenCentral()  // returns the locations of Maven Central
+}
+
+/* Apache Commons CSV, release from https://commons.apache.org/proper/commons-csv/
+// Maven in written in XML (old Groovy syntax):
+<dependency>
+        <groupId>org.apache.commons</groupId>
+    <artifactId>commons-csv</artifactId>
+        <version>1.9.0</version>
+</dependency>*/
+// This is added to dependencies as shown below (short form):
+//    implementation 'org.apache.commons:commons-csv:1.9.0'
+// Then, to load it to External Libraries on the Project Panel, go to the Gradle tab (on the right margin of IntelliJ)
+// and click Refresh. You can optionally choose to Auto-Reload settings.
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// NOTE THAT THERE ARE MORE EXTERNAL LIBRARIES SHOWN IN THE PROJECT PANEL
+// than dependencies listed above: these are transient dependencies.
+// Check them with the gradle wrapper command in the terminal:
+// ./gradlew dependencies
+// (it might require installation (type ./gradlew)
