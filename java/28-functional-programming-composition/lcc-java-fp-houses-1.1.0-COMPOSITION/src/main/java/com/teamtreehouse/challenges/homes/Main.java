@@ -29,7 +29,7 @@ public class Main {
     // This fluctuates and is hardcoded temporarily
     BigDecimal argPesoToUsdRate = new BigDecimal("15.48");
 
-    // TODO: These functions are in working order, but separately they don't match the single Function signature expected
+    // DONE: These functions are in working order, but separately they don't match the single Function signature expected
     Function<Integer, BigDecimal> usdToArgentinePesoConverter = usd -> argPesoToUsdRate.multiply(new BigDecimal(usd));
 
     Function<BigDecimal, String> argentineCurrencyFormatter = price -> {

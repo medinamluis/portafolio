@@ -27,7 +27,7 @@ public class Main {
   public static List<String> getFirstFiveAmazingPlayersImperatively(List<Score> scores) {
     List<String> players = new ArrayList<>();
     for (Score score : scores) {
-      if (isScoreLargerThab100k(score)) {
+      if (isScoreLargerThan100k(score)) {
         players.add(score.getPlayer());
         if (players.size() >= 5) {
           break;
@@ -37,13 +37,17 @@ public class Main {
     return players;
   }
 
-  private static boolean isScoreLargerThab100k(Score score) {
+  private static boolean isScoreLargerThan100k(Score score) {
     return score.getAmount() > 100000;
   }
 
   public static List<String> getFirstFiveAmazingPlayersDeclaratively(List<Score> scores) {
+    // DONE: Filter where amount is greater than 100,000
+    // DONE: Map to the player's name
+    // DONE: Limit to 5
+    // DONE: And collect those strings and return them
     return scores.stream()
-        .filter(Main::isScoreLargerThab100k)
+        .filter(Main::isScoreLargerThan100k)
         .map(Score::getPlayer)
         .limit(5)
         .collect(Collectors.toList());

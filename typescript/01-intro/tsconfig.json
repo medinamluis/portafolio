@@ -1,0 +1,48 @@
+{
+	"compilerOptions": {
+		// * Unclear what this is for (so I commented it out):
+		// "module": "amd",
+		// *  A mapping for the minification:
+		"sourceMap": true,
+		// * Promises are included by default in latest TypeScript versions (tested here with 4.7)
+		// so setting the target "es6" instead of the "es5" used here does not seem to be needed (?)
+		"target": "es5",
+		// * For decorators:
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+	},
+	"files": [  // run this file only (update accordingly):
+		// "01_hello.ts"
+		// "02_typescript_config.ts"
+		// "03_variables.ts"
+		// "04_string_interpolation.ts"
+		// "05_types.ts"
+		// "06_type_alias.ts"
+		// "07_union_types.ts"
+		// "08_arithmetic_operations.ts"
+		// "09_conditionals.ts"
+		// "10_conditional_operators.ts"
+		// "11_compound_conditionals.ts"
+		// "12_loops.ts"
+		// "13_functions.ts"
+		// "14_function_args.ts"
+		// "15_arrow_functions.ts"
+		// "16_function_declarations_vs_expressions.ts"
+		// "17_immediately_invoked_functions.ts"
+		// "18_immediately_invoked_arguments.ts"
+		// "19_closure_introduction.ts"
+		// "20_classes.ts"
+		// "21_inheritance.sts",
+		// "22_objects.ts"
+		// "23_interfaces.ts"
+		// "24_interface_functions.ts"
+		// "25_interface_classes.ts"
+		// "26_namespaces.ts"
+		// "27_this.ts"
+		// "28_higher_order_functions_callbacks.ts"
+		// "29_promises.ts"
+		// "30_decorator_intro.ts"
+		// "31_class_decorator.ts"
+		"32_method_decorator.ts"
+	]
+}

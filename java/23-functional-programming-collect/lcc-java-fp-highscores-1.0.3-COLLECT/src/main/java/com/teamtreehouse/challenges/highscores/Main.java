@@ -38,6 +38,9 @@ public class Main {
   }
 
   public static List<Score> getFirstThreeNintendoScoresDeclaratively(List<Score> scores) {
+    // DONE: Filter the scores stream to be of platform 'Nintendo Entertainment System'
+    // DONE: Limit it to 3 scores
+    // DONE: Return a newly collected list using the collect method
     return scores.stream()
       .filter(Main::isNintendo)
         .limit(3)

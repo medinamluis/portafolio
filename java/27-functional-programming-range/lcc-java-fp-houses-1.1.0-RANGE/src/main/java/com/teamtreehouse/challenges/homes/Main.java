@@ -26,12 +26,12 @@ public class Main {
   }
 
   public static List<String> getStateCodesFromRecords(List<HousingRecord> records) {
-    // TODO: Open a stream on records
-    // TODO: Map the stream to the state code
-    // TODO: Filter out any records without a state
-    // TODO: There are duplicate state codes in the records, make sure we have a unique representation
-    // TODO: Sort them alphabetically
-    // TODO: Collect them into a new list.
+    // DONE: Open a stream on records
+    // DONE: Map the stream to the state code
+    // DONE: Filter out any records without a state
+    // DONE: There are duplicate state codes in the records, make sure we have a unique representation
+    // DONE: Sort them alphabetically
+    // DONE: Collect them into a new list.
     return records.stream()
       .map(HousingRecord::getState)
       .filter(state -> state.length() > 1)
@@ -47,7 +47,7 @@ public class Main {
   }
 
   public static void displayStateCodeMenuDeclaratively(List<String> stateCodes) {
-    // TODO: Use a range to display a numbered list of the states, starting at 1.
+    // DONE: Use a range to display a numbered list of the states, starting at 1.
     IntStream.rangeClosed(1, stateCodes.size())
       .mapToObj(i -> String.format("%d. %s", i, stateCodes.get(i-1)))
         .forEach(System.out::println);

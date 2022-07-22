@@ -45,6 +45,12 @@ public class Main {
   }
 
   public static Map<String,Long> getWordCountFromGameTitlesDeclaratively(List<Score> scores) {
+    // DONE: Open a stream on scores
+    // DONE: Map the stream to the game title
+    // DONE: Map that to it's lowercase version, so things are case insensitive
+    // DONE: Map that to a new String array of each word in the title (See imperative implementation)
+    // DONE: Flatten those words into the stream
+    // DONE: Collect a grouping of the word to count
     return scores.stream()
       .map(Score::getGame)
       .map(name -> name.toLowerCase())

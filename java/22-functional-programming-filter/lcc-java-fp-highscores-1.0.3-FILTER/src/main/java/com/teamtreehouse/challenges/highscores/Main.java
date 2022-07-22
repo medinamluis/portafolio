@@ -27,6 +27,8 @@ public class Main {
   }
 
   public static void printBurgerTimeScoresDeclaratively(List<Score> scores) {
+    // DONE: Open a stream off of scores and filter "Burger Time" scores that are larger than 20,000
+    // DONE: Print out those scores using the forEach method off of the Stream
     scores.stream()
       .filter(score -> score.getGame().equals("Burger Time"))
       .filter(score -> score.getAmount() >= 20000)
